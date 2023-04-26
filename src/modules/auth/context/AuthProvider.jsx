@@ -71,7 +71,5 @@ export default function AuthProvider() {
     >
       <Outlet />
     </AuthContext.Provider>
-    <h1>dsasd</h1>
-    <h2>asdasdsad</h2>
   );
 }
