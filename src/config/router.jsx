@@ -5,28 +5,39 @@ import ProductListing from "../modules/product/pages/ProductListing";
 import ProductDetail from "../modules/product/pages/ProductDetail";
 import ErrorPage from "../modules/common/pages/ErrorPage";
 import ProductAdd from "../modules/product/pages/ProductAdd";
+import Login from "../modules/auth/pages/Login";
+import AuthProvider from "../modules/auth/context/AuthProvider";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <RootLayout />,
-    // errorElement: <ErrorPage />,
+    element: <AuthProvider />,
     children: [
       {
-        index: true,
-        element: <Dashboard />,
+        path: "/",
+        element: <RootLayout />,
+        // errorElement: <ErrorPage />,
+        children: [
+          {
+            index: true,
+            element: <Dashboard />,
+          },
+          {
+            path: "products",
+            element: <ProductListing />,
+          },
+          {
+            path: "products/:productId",
+            element: <ProductDetail />,
+          },
+          {
+            path: "products/new",
+            element: <ProductAdd />,
+          },
+        ],
       },
       {
-        path: "products",
-        element: <ProductListing />,
-      },
-      {
-        path: "products/:productId",
-        element: <ProductDetail />,
-      },
-      {
-        path: "products/new",
-        element: <ProductAdd />,
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

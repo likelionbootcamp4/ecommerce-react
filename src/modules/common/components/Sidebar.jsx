@@ -14,9 +14,11 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import PeopleIcon from "@mui/icons-material/People";
-import { Tooltip } from "@mui/material";
+import { Button, Tooltip } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import NavLinkBehavior from "./NavLinkBehavior";
+import { useContext } from "react";
+import { AuthContext } from "../../auth/context/AuthProvider";
 
 const navOptions = [
   {
@@ -92,6 +94,7 @@ const Drawer = styled(MuiDrawer, {
 
 export default function Sidebar({ open, onDrawerClose }) {
   const theme = useTheme();
+  const { onLogout } = useContext(AuthContext);
   return (
     <Drawer variant="permanent" open={open}>
       <DrawerHeader>
@@ -135,6 +138,9 @@ export default function Sidebar({ open, onDrawerClose }) {
           </ListItem>
         ))}
       </List>
+      <Button variant="outlined" onClick={onLogout}>
+        Logout
+      </Button>
     </Drawer>
   );
 }
