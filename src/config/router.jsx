@@ -7,6 +7,7 @@ import ErrorPage from "../modules/common/pages/ErrorPage";
 import ProductAdd from "../modules/product/pages/ProductAdd";
 import Login from "../modules/auth/pages/Login";
 import AuthProvider from "../modules/auth/context/AuthProvider";
+import UserListing from "../modules/user/pages/UserListing";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
           {
             path: "products/new",
             element: <ProductAdd />,
+          },
+          {
+            path: "users",
+            element: <UserListing />,
           },
         ],
       },
